@@ -104,5 +104,6 @@ if __name__ == "__main__":
 
 
 # chromadb==0.3.29
+# chromadb==0.5.0
 
         
