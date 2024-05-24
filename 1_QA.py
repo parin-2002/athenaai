@@ -29,29 +29,31 @@ def main():
     st.set_page_config("Athena")
 
     # Display the title and header
-    st.title("Hi, I am Athena. How can I help you?  💁")
-    st.header("Ask Athena questions about your uploaded PDF and Word documents 📚.")
+    st.title("Hi, I am Athena. How can I help you?  🤖")
+    st.header("Ask Athena questions about your uploaded course materials (PDF and Word documents) 📚.")
 
     # Display information message
-    st.info(""" Athena allows you to ask questions based on the content of your PDF and WORD files and get a concise response from OPENAI. Here's how to use it:
-
-    1. Upload Your Files:
+    st.info(""" Athena allows you to ask questions based on the content of your PDF and WORD files and get a concise response from Athena. Here's how to use it:
+            
+    1. Select Model: Default model is Gemini. We recommend using Gemini. If it doesn't work well, you can switch to the OpenAI model from the side menu. 
+    2. Upload Your Files:
             Drop your PDF and/or Word files into the designated area on the left sidebar. 
-    2. Submit and Process:
+    3. Submit and Process:
             Click the "Submit & Process" button to start processing your uploaded files.
-    3. Ask Your Question:
+    4. Ask Your Question:
             Enter your question in the text input field below.
-    4. Get Your Answer:
+    5. Get Your Answer:
             Click the "Get Answer" button to receive a response generated from the content of your files.
             
     Additionally, you can:
-    - Click on the "summarizer" on the left sidebar to generate a summary of the uploaded files.
-    - Click on the "mcq" on the left sidebar to generate a set of multiple-choice questions based on the content of the files.
+    - Click on the "Summarizer" on the left sidebar to generate a summary of the uploaded files.
+    - Click on the "MCQs Generator" on the left sidebar to generate a set of multiple-choice questions based on the content of the files.
     """)
     # Display an information message
-    st.warning("""Note: The OPENAI response may provide more general information and inaccurate, while the response based on your files will be specific to the content you uploaded. 
+    st.warning("""Note: The Gemini and OPENAI response may provide more general information and inaccurate, while the response based on your files will be specific to the content you uploaded. 
                Additionally, include notes to enhance learning and outcomes for better understanding!""")
-
+    st.warning("""You can switch the model while uploading a file. After the file is uploaded, switching is not possible. Since the OpenAI model is not our primary model, we haven't implemented dynamic switching throughout the app.""",icon="⚠️")
+    
 
     # Input field for the user to ask a question
     user_question = st.text_input("Ask a Question: What is ...")
@@ -72,6 +74,12 @@ def main():
             
     # Sidebar section
     with st.sidebar:
+
+        #select model
+        model_name = st.selectbox("Which model do you want to use?",
+                              ("gemini-pro", "gpt-3.5-turbo-1106"))
+        st.write("You selected:", model_name)
+
         # Display the sidebar title
         st.title("Menu:")
         # File uploader for uploading files
@@ -84,7 +92,7 @@ def main():
                 manager=setManager()
                 manager.manage_document_extractor(docs)
                 manager.manage_chroma_vector_store()
-                manager.manage_question_answer_chain()
+                manager.manage_question_answer_chain(model_name)
 
             # Success message
             st.success("Done")
@@ -97,7 +105,4 @@ if __name__ == "__main__":
 
 # chromadb==0.3.29
 
-        # #select model
-        # option = st.selectbox("Which model do you want to use?",
-        #                       ("gemini-pro", "gpt-3.5-turbo-1106"))
-        # st.write("You selected:", option)
+        

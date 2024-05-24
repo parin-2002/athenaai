@@ -27,14 +27,14 @@ with open(r"Response.json", 'r') as file:
     RESPONSE_JSON = json.load(file)
     response_json= json.dumps(RESPONSE_JSON)
 
-st.title("Real-Time MCQ Creator")
+st.title("Real-Time MCQ Generator")
 
 manager=getManager()
 if manager!=None:
     st.info("""
             Follow these steps to create multiple-choice questions (MCQs) based on your selected file:
             
-            1. Select a File on the Left Side:
+            1. Select a File:
             Click on the "Choose an option" dropdown menu under "Select one file" to select the document you want to generate MCQs from (e.g., TestDocument.pdf).
             2. Specify the Number of MCQs:
             Adjust the number of MCQs you want to create using the "+" or "-" buttons under "No. of MCQs."

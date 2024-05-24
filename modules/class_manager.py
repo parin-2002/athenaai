@@ -24,9 +24,9 @@ class ClassManager:
         self.base_retriever = self.chroma_vector_store.as_retriever(search_kwargs={"k": 5})
         self.ensemble_retriever = self.chroma_vector_store.bm25Retriever()
 
-    def manage_question_answer_chain(self):
+    def manage_question_answer_chain(self,model_name):
         # Create an instance of QuestionAnswerChain
-        self.question_answer_chain = QuestionAnswerChain()
+        self.question_answer_chain = QuestionAnswerChain(model_name=model_name)
         # call create_qa_chain to get question_answer_chain
         self.question_answer_chain.create_qa_chain(retriever=self.base_retriever)
         self.question_answer_chain.ensemble_retriever(self.ensemble_retriever)

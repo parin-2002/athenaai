@@ -7,7 +7,7 @@
             "c": "choice here",
             "d": "choice here"
         },
-        "correct": "correct answer"
+        "correct": "correct answer and reason why this answer is correct from given text"
     },
     "2": {
         "mcq": "multiple choice question",
@@ -17,7 +17,7 @@
             "c": "choice here",
             "d": "choice here"
         },
-        "correct": "correct answer"
+        "correct": "correct answer and reason why this answer is correct from given text"
     },
     "3": {
         "mcq": "multiple choice question",
@@ -27,6 +27,6 @@
             "c": "choice here",
             "d": "choice here"
         },
-        "correct": "correct answer"
+        "correct": "correct answer and reason why this answer is correct from given text"
     }
 }
