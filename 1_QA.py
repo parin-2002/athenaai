@@ -68,7 +68,7 @@ def main():
                ans=manager.ensemble_qa(user_question)
                # Process the user's question and display the response
             #    st.write("### **Reply**:  \n" + ans['result'])
-               st.write("### **Ensemble Reply**:  \n" + ans['result'])
+               st.write("### **Reply**:  \n" + ans['result'])
            else:
                st.warning("Please upload a file before proceeding!")
             
